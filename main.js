@@ -87,12 +87,50 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./lib/react-shim.js":
+/*!***************************!*\
+  !*** ./lib/react-shim.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+if (window.setTimeout == null) {
+  window.setTimeout = function (fn) {
+    fn();
+  };
+}
+
+if (window.clearTimeout == null) {
+  window.clearTimeout = function () {};
+} //  this is a temporary shim for the latest versions of react.
+
+
+if (window.cancelAnimationFrame == null) {
+  window.cancelAnimationFrame = function () {};
+}
+
+if (window.requestAnimationFrame == null) {
+  window.requestAnimationFrame = function () {
+    console.log("requestAnimationFrame is not supported yet");
+  };
+}
+
+if (window.HTMLIFrameElement == null) {
+  window.HTMLIFrameElement = class HTMLIFrameElement {};
+}
+
+/***/ }),
+
 /***/ "./lib/react-xd.js":
 /*!*************************!*\
   !*** ./lib/react-xd.js ***!
   \*************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
+
+//  temporary stubs required for React. These will not be required as soon as
+// the XD environment provides setTimeout/clearTimeout
+const reactShim = __webpack_require__(/*! ./react-shim */ "./lib/react-shim.js");
 
 const ReactReconciler = __webpack_require__(/*! react-reconciler */ "./node_modules/react-reconciler/index.js");
 
@@ -16526,13 +16564,10 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-//  temporary stubs required for React. These will not be required as soon as
-// the XD environment provides setTimeout/clearTimeout
-const reactShim = __webpack_require__(/*! ./react-shim */ "./src/react-shim.js");
+//require ReactXD before React so the required shims are also loaded.
+const ReactXD = __webpack_require__(/*! ../lib/react-xd */ "./lib/react-xd.js");
 
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-const ReactXD = __webpack_require__(/*! ../lib/react-xd */ "./lib/react-xd.js");
 
 const {
   Color
@@ -16556,7 +16591,7 @@ const Shapes = () => React.createElement(React.Fragment, null, React.createEleme
   width: 100,
   height: 100
 }), React.createElement(BlueEllipse, {
-  radiusX: 10,
+  radiusX: 100,
   radiusY: 100
 }), React.createElement("text", {
   fontSize: 40,
@@ -16574,40 +16609,6 @@ module.exports = {
     myPluginCommand: createRectangle
   }
 };
-
-/***/ }),
-
-/***/ "./src/react-shim.js":
-/*!***************************!*\
-  !*** ./src/react-shim.js ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-if (window.setTimeout == null) {
-  window.setTimeout = function (fn) {
-    fn();
-  };
-}
-
-if (window.clearTimeout == null) {
-  window.clearTimeout = function () {};
-} //  this is a temporary shim for the latest versions of react.
-
-
-if (window.cancelAnimationFrame == null) {
-  window.cancelAnimationFrame = function () {};
-}
-
-if (window.requestAnimationFrame == null) {
-  window.requestAnimationFrame = function () {
-    console.log("requestAnimationFrame is not supported yet");
-  };
-}
-
-if (window.HTMLIFrameElement == null) {
-  window.HTMLIFrameElement = class HTMLIFrameElement {};
-}
 
 /***/ }),
 
