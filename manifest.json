@@ -1,0 +1,17 @@
+{
+  "id": "CreateRedRectangle",
+  "name": "Create Red Rectangle with React-XD",
+  "version": "1.0.0",
+  "host": {
+    "app": "XD",
+    "minVersion": "13.0.0"
+  },
+  "uiEntryPoints": [
+    {
+      "type": "menu",
+      "label": "Create Red Rectangle",
+      "commandId": "myPluginCommand",
+      "shortcut": { "mac": "Cmd+Shift+N", "win": "Ctrl+Shift+N" }
+    }
+  ]
+}

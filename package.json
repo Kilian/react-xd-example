@@ -1,0 +1,40 @@
+{
+  "name": "react-xd-example",
+  "description": "Example Adobe XD plugin that uses the React-XD reconciler",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "watch": "nodemon -w src -e js,jsx,css -w webpack.config.js -x yarn build",
+    "build": "webpack --mode development"
+  },
+  "author": {
+    "name": "Kilian Valkhof",
+    "email": "kilian@kilianvalkhof.com",
+    "url": "https://kilianvalkhof.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kilian/reeact-xd-example/issues"
+  },
+  "keywords": [
+    "Adobe XD",
+    "React"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.18.7",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^1.0.0",
+    "lodash.upperfirst": "^4.3.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-reconciler": "^0.20.1",
+    "style-loader": "^0.22.0"
+  }
+}
